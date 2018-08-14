@@ -4,6 +4,7 @@ import os
 import string
 import subprocess
 from pathlib import Path
+from pprint import pprint
 
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
@@ -17,6 +18,15 @@ def on_connect(client, userdata, flags, rc):
 def update_nlu(client, userdata, msg):
     data = json.loads(msg.payload.decode())
     pprint(data)
+
+
+    # {'operations': [['add',
+    #              {'de.fhem.Device': ['Bogenlampe',
+    #                                  'Deckenlampe',
+    #                                  'Waschanlage',
+    #                                  'Schreibtischlampe',
+    #                                  'Thermometer']}],
+    #             ['add', {'de.fhem.Room': ['Wohnzimmer', 'Wintergarten']}]]}
 
 
 # https://stackoverflow.com/questions/8369219/how-do-i-read-a-text-file-into-a-string-variable-in-python
