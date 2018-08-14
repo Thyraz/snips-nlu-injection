@@ -16,6 +16,7 @@ def on_connect(client, userdata, flags, rc):
 
 def update_nlu(client, userdata, msg):
     data = json.loads(msg.payload.decode())
+    pprint(data)
 
 
 # https://stackoverflow.com/questions/8369219/how-do-i-read-a-text-file-into-a-string-variable-in-python
@@ -27,7 +28,7 @@ snips_config = toml.loads(open("/etc/snips.toml").read())
 client = mqtt.Client()
 client.on_connect = on_connect
 
-client.message_callback_add("hermes/asr/inject", tts_say)
+client.message_callback_add("hermes/asr/inject", update_nlu)
 
 mqtt_host, mqtt_port = snips_config["snips-common"]["mqtt"].split(":")
 mqtt_port = int(mqtt_port)
