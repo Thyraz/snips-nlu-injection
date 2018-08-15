@@ -1,0 +1,579 @@
+{
+  "config": {
+    "intent_parsers_configs": [
+      {
+        "max_pattern_length": 1000,
+        "max_queries": 100,
+        "unit_name": "deterministic_intent_parser"
+      },
+      {
+        "intent_classifier_config": {
+          "data_augmentation_config": {
+            "add_builtin_entities_examples": false,
+            "min_utterances": 20,
+            "noise_factor": 5,
+            "unknown_word_prob": 0.2,
+            "unknown_words_replacement_string": "unknownword"
+          },
+          "featurizer_config": {
+            "pvalue_threshold": 0.4,
+            "sublinear_tf": false,
+            "word_clusters_name": null
+          },
+          "random_seed": null,
+          "unit_name": "log_reg_intent_classifier"
+        },
+        "slot_filler_config": {
+          "crf_args": {
+            "algorithm": "lbfgs",
+            "c1": 0.1,
+            "c2": 0.1
+          },
+          "data_augmentation_config": {
+            "add_builtin_entities_examples": false,
+            "capitalization_ratio": 0,
+            "min_utterances": 200
+          },
+          "feature_factory_configs": [
+            {
+              "args": {
+                "common_words_gazetteer_name": "top_200000_words_stemmed",
+                "n": 1,
+                "use_stemming": true
+              },
+              "factory_name": "ngram",
+              "offsets": [
+                -2,
+                -1,
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "args": {
+                "common_words_gazetteer_name": "top_200000_words_stemmed",
+                "n": 2,
+                "use_stemming": true
+              },
+              "factory_name": "ngram",
+              "offsets": [
+                -2,
+                1
+              ]
+            },
+            {
+              "args": {
+                "prefix_size": 2
+              },
+              "factory_name": "prefix",
+              "offsets": [
+                0
+              ]
+            },
+            {
+              "args": {
+                "prefix_size": 5
+              },
+              "factory_name": "prefix",
+              "offsets": [
+                0
+              ]
+            },
+            {
+              "args": {
+                "suffix_size": 2
+              },
+              "factory_name": "suffix",
+              "offsets": [
+                0
+              ]
+            },
+            {
+              "args": {
+                "suffix_size": 5
+              },
+              "factory_name": "suffix",
+              "offsets": [
+                0
+              ]
+            },
+            {
+              "args": {},
+              "factory_name": "is_digit",
+              "offsets": [
+                -1,
+                0,
+                1
+              ]
+            },
+            {
+              "args": {},
+              "factory_name": "is_first",
+              "offsets": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "args": {},
+              "factory_name": "is_last",
+              "offsets": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "args": {
+                "n": 1
+              },
+              "factory_name": "shape_ngram",
+              "offsets": [
+                0
+              ]
+            },
+            {
+              "args": {
+                "n": 2
+              },
+              "factory_name": "shape_ngram",
+              "offsets": [
+                -1,
+                0
+              ]
+            },
+            {
+              "args": {
+                "n": 3
+              },
+              "factory_name": "shape_ngram",
+              "offsets": [
+                -1
+              ]
+            },
+            {
+              "args": {
+                "tagging_scheme_code": 2,
+                "use_stemming": true
+              },
+              "drop_out": 0.1,
+              "factory_name": "entity_match",
+              "offsets": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "args": {
+                "tagging_scheme_code": 1
+              },
+              "factory_name": "builtin_entity_match",
+              "offsets": [
+                -2,
+                -1,
+                0
+              ]
+            }
+          ],
+          "random_seed": null,
+          "tagging_scheme": 1,
+          "unit_name": "crf_slot_filler"
+        },
+        "unit_name": "probabilistic_intent_parser"
+      }
+    ],
+    "unit_name": "nlu_engine"
+  },
+  "dataset_metadata": {
+    "entities": {
+      "de.fhem.ChangePercent": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Dunkler": "dunkler",
+          "Erhohen": "rauf",
+          "Erh\u00f6hen": "rauf",
+          "Gro\u00dfer": "rauf",
+          "Gr\u00f6\u00dfer": "rauf",
+          "Heller": "heller",
+          "Hoch": "rauf",
+          "Hoher": "rauf",
+          "H\u00f6her": "rauf",
+          "Kalter": "k\u00e4lter",
+          "Kleiner": "runter",
+          "K\u00e4lter": "k\u00e4lter",
+          "Lauter": "lauter",
+          "Leiser": "leiser",
+          "Niedriger": "runter",
+          "Rauf": "rauf",
+          "Runter": "runter",
+          "Verringern": "runter",
+          "Warmer": "w\u00e4rmer",
+          "Weiter Auf": "rauf",
+          "Weiter Hoch": "rauf",
+          "Weiter Offnen": "rauf",
+          "Weiter Runter": "runter",
+          "Weiter Schlie\u00dfen": "runter",
+          "Weiter Zu": "runter",
+          "Weiter \u00d6ffnen": "rauf",
+          "W\u00e4rmer": "w\u00e4rmer",
+          "dunkler": "dunkler",
+          "erhohen": "rauf",
+          "erh\u00f6hen": "rauf",
+          "gro\u00dfer": "rauf",
+          "gr\u00f6\u00dfer": "rauf",
+          "heller": "heller",
+          "hoch": "rauf",
+          "hoher": "rauf",
+          "h\u00f6her": "rauf",
+          "kalter": "k\u00e4lter",
+          "kleiner": "runter",
+          "k\u00e4lter": "k\u00e4lter",
+          "lauter": "lauter",
+          "leiser": "leiser",
+          "niedriger": "runter",
+          "rauf": "rauf",
+          "runter": "runter",
+          "verringern": "runter",
+          "warmer": "w\u00e4rmer",
+          "weiter auf": "rauf",
+          "weiter hoch": "rauf",
+          "weiter offnen": "rauf",
+          "weiter runter": "runter",
+          "weiter schlie\u00dfen": "runter",
+          "weiter zu": "runter",
+          "weiter \u00f6ffnen": "rauf",
+          "w\u00e4rmer": "w\u00e4rmer"
+        }
+      },
+      "de.fhem.Device": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Waschanlage": "Waschanlage",
+          "Deckenlampe": "Deckenlampe",
+          "Radio": "Radio",
+          "waschanlage": "Waschanlage",
+          "deckenlampe": "Deckenlampe",
+          "radio": "Radio"
+        }
+      },
+      "de.fhem.MediaChannels": {
+        "automatically_extensible": true,
+        "utterances": {
+          "BigFM": "BigFM",
+          "Bigfm": "BigFM",
+          "DasDing": "DasDing",
+          "Dasding": "DasDing",
+          "R T L": "R.T.L",
+          "R TL": "R.T.L",
+          "R.T.L": "R.T.L",
+          "R.TL": "R.T.L",
+          "RT L": "R.T.L",
+          "RT.L": "R.T.L",
+          "RTL": "R.T.L",
+          "Rtl": "R.T.L",
+          "S W R 3": "S.W.R.3",
+          "S W R drei": "S.W.R.3",
+          "S W R3": "S.W.R.3",
+          "S WR 3": "S.W.R.3",
+          "S WR drei": "S.W.R.3",
+          "S WR3": "S.W.R.3",
+          "S.W.R.3": "S.W.R.3",
+          "S.W.R.drei": "S.W.R.3",
+          "S.W.R3": "S.W.R.3",
+          "S.WR.3": "S.W.R.3",
+          "S.WR.drei": "S.W.R.3",
+          "S.WR3": "S.W.R.3",
+          "SW R 3": "S.W.R.3",
+          "SW R drei": "S.W.R.3",
+          "SW R3": "S.W.R.3",
+          "SW.R.3": "S.W.R.3",
+          "SW.R.drei": "S.W.R.3",
+          "SW.R3": "S.W.R.3",
+          "SWR 3": "S.W.R.3",
+          "SWR drei": "S.W.R.3",
+          "SWR.3": "S.W.R.3",
+          "SWR.drei": "S.W.R.3",
+          "SWR3": "S.W.R.3",
+          "Swr 3": "S.W.R.3",
+          "Swr Drei": "S.W.R.3",
+          "Swr drei": "S.W.R.3",
+          "Z D F": "Z.D.F",
+          "Z DF": "Z.D.F",
+          "Z.D.F": "Z.D.F",
+          "Z.DF": "Z.D.F",
+          "ZD F": "Z.D.F",
+          "ZD.F": "Z.D.F",
+          "ZDF": "Z.D.F",
+          "Zdf": "Z.D.F",
+          "bigfm": "BigFM",
+          "dasding": "DasDing",
+          "r t l": "R.T.L",
+          "r tl": "R.T.L",
+          "r.t.l": "R.T.L",
+          "r.tl": "R.T.L",
+          "rt l": "R.T.L",
+          "rt.l": "R.T.L",
+          "rtl": "R.T.L",
+          "s w r 3": "S.W.R.3",
+          "s w r drei": "S.W.R.3",
+          "s w r3": "S.W.R.3",
+          "s wr 3": "S.W.R.3",
+          "s wr drei": "S.W.R.3",
+          "s wr3": "S.W.R.3",
+          "s.w.r.3": "S.W.R.3",
+          "s.w.r.drei": "S.W.R.3",
+          "s.w.r3": "S.W.R.3",
+          "s.wr.3": "S.W.R.3",
+          "s.wr.drei": "S.W.R.3",
+          "s.wr3": "S.W.R.3",
+          "sw r 3": "S.W.R.3",
+          "sw r drei": "S.W.R.3",
+          "sw r3": "S.W.R.3",
+          "sw.r.3": "S.W.R.3",
+          "sw.r.drei": "S.W.R.3",
+          "sw.r3": "S.W.R.3",
+          "swr 3": "S.W.R.3",
+          "swr drei": "S.W.R.3",
+          "swr.3": "S.W.R.3",
+          "swr.drei": "S.W.R.3",
+          "swr3": "S.W.R.3",
+          "z d f": "Z.D.F",
+          "z df": "Z.D.F",
+          "z.d.f": "Z.D.F",
+          "z.df": "Z.D.F",
+          "zd f": "Z.D.F",
+          "zd.f": "Z.D.F",
+          "zdf": "Z.D.F"
+        }
+      },
+      "de.fhem.MediaControlComand": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Pause": "Pause",
+          "Pausieren": "Pause",
+          "pause": "Pause",
+          "pausieren": "Pause"
+        }
+      },
+      "de.fhem.NumericType": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Anzahl": "Anzahl",
+          "Batterie": "Batterie",
+          "Batteriestand": "Batterie",
+          "Batteriestatus": "Batterie",
+          "Batteriezustand": "Batterie",
+          "Eingestellt": "Sollwert",
+          "Eingestellte Temperatur": "Sollwert",
+          "Farbtemperatur": "Temperatur",
+          "Feuchte": "Luftfeuchtigkeit",
+          "Gemessene Temperatur": "Temperatur",
+          "Gestellt": "Sollwert",
+          "Helligkeit": "Helligkeit",
+          "Ladestand": "Batterie",
+          "Ladestatus": "Batterie",
+          "Ladezustand": "Batterie",
+          "Lautstarke": "Lautst\u00e4rke",
+          "Lautst\u00e4rke": "Lautst\u00e4rke",
+          "Luftfeuchte": "Luftfeuchtigkeit",
+          "Luftfeuchtigkeit": "Luftfeuchtigkeit",
+          "Sind Alle": "Anzahl",
+          "Sollwert": "Sollwert",
+          "Temperatur": "Temperatur",
+          "Wie Feucht": "Luftfeuchtigkeit",
+          "Wie Hei\u00df": "Temperatur",
+          "Wie Hell": "Helligkeit",
+          "Wie Kalt": "Temperatur",
+          "Wie Laut": "Lautst\u00e4rke",
+          "Wie Viele": "Anzahl",
+          "Wie Warm": "Temperatur",
+          "anzahl": "Anzahl",
+          "batterie": "Batterie",
+          "batteriestand": "Batterie",
+          "batteriestatus": "Batterie",
+          "batteriezustand": "Batterie",
+          "eingestellt": "Sollwert",
+          "eingestellte Temperatur": "Sollwert",
+          "eingestellte temperatur": "Sollwert",
+          "farbtemperatur": "Temperatur",
+          "feuchte": "Luftfeuchtigkeit",
+          "gemessene Temperatur": "Temperatur",
+          "gemessene temperatur": "Temperatur",
+          "gestellt": "Sollwert",
+          "helligkeit": "Helligkeit",
+          "ladestand": "Batterie",
+          "ladestatus": "Batterie",
+          "ladezustand": "Batterie",
+          "lautstarke": "Lautst\u00e4rke",
+          "lautst\u00e4rke": "Lautst\u00e4rke",
+          "luftfeuchte": "Luftfeuchtigkeit",
+          "luftfeuchtigkeit": "Luftfeuchtigkeit",
+          "sind alle": "Anzahl",
+          "sollwert": "Sollwert",
+          "temperatur": "Temperatur",
+          "wie feucht": "Luftfeuchtigkeit",
+          "wie hei\u00df": "Temperatur",
+          "wie hell": "Helligkeit",
+          "wie kalt": "Temperatur",
+          "wie laut": "Lautst\u00e4rke",
+          "wie viele": "Anzahl",
+          "wie warm": "Temperatur"
+        }
+      },
+      "de.fhem.OnOffStatus": {
+        "automatically_extensible": false,
+        "utterances": {
+          "1": "an",
+          "Abgeschaltet": "aus",
+          "Aktiv": "l\u00e4uft",
+          "An": "an",
+          "Angeschaltet": "an",
+          "Auf": "auf",
+          "Aus": "aus",
+          "Ausgeschaltet": "aus",
+          "Ein": "an",
+          "Eingeschaltet": "an",
+          "Fertig": "fertig",
+          "Geoffnet": "auf",
+          "Geschlossen": "zu",
+          "Gestoppt": "fertig",
+          "Ge\u00f6ffnet": "auf",
+          "Lauft": "l\u00e4uft",
+          "L\u00e4uft": "l\u00e4uft",
+          "Offen": "auf",
+          "Zu": "zu",
+          "abgeschaltet": "aus",
+          "aktiv": "l\u00e4uft",
+          "an": "an",
+          "angeschaltet": "an",
+          "auf": "auf",
+          "aus": "aus",
+          "ausgeschaltet": "aus",
+          "ein": "an",
+          "eingeschaltet": "an",
+          "eins": "an",
+          "fertig": "fertig",
+          "geoffnet": "auf",
+          "geschlossen": "zu",
+          "gestoppt": "fertig",
+          "ge\u00f6ffnet": "auf",
+          "lauft": "l\u00e4uft",
+          "l\u00e4uft": "l\u00e4uft",
+          "offen": "auf",
+          "zu": "zu"
+        }
+      },
+      "de.fhem.OnOffValue": {
+        "automatically_extensible": false,
+        "utterances": {
+          "1": "an",
+          "Ab": "aus",
+          "Abschalten": "aus",
+          "Aktiviere": "an",
+          "An": "an",
+          "Anmachen": "an",
+          "Anschalten": "an",
+          "Aus": "aus",
+          "Ausmachen": "aus",
+          "Ausschalten": "aus",
+          "Deaktivieren": "aus",
+          "Ein": "an",
+          "Einschalten": "an",
+          "Offne": "aus",
+          "Schlie\u00dfe": "an",
+          "Starte": "an",
+          "Starten": "an",
+          "Stoppe": "aus",
+          "Stoppen": "aus",
+          "ab": "aus",
+          "abschalten": "aus",
+          "aktiviere": "an",
+          "an": "an",
+          "anmachen": "an",
+          "anschalten": "an",
+          "aus": "aus",
+          "ausmachen": "aus",
+          "ausschalten": "aus",
+          "deaktivieren": "aus",
+          "ein": "an",
+          "eins": "an",
+          "einschalten": "an",
+          "offne": "aus",
+          "schlie\u00dfe": "an",
+          "starte": "an",
+          "starten": "an",
+          "stoppe": "aus",
+          "stoppen": "aus",
+          "\u00d6ffne": "aus",
+          "\u00f6ffne": "aus"
+        }
+      },
+      "de.fhem.Room": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Kuche": "K\u00fcche",
+          "K\u00fcche": "K\u00fcche",
+          "Wohnzimmer": "Wohnzimmer",
+          "Wintergarten": "Wintergarten",
+          "kuche": "K\u00fcche",
+          "k\u00fcche": "K\u00fcche",
+          "wohnzimmer": "Wohnzimmer",
+          "wintergarten": "Wintergarten"
+        }
+      },
+      "de.fhem.Unit": {
+        "automatically_extensible": false,
+        "utterances": {
+          "Prozent": "Prozent",
+          "prozent": "Prozent"
+        }
+      }
+    },
+    "language_code": "de",
+    "slot_name_mappings": {
+      "Thyraz:GetNumeric": {
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room",
+        "Type": "de.fhem.NumericType"
+      },
+      "Thyraz:GetOnOff": {
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room",
+        "Status": "de.fhem.OnOffStatus"
+      },
+      "Thyraz:MediaChannels": {
+        "Channel": "de.fhem.MediaChannels",
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room"
+      },
+      "Thyraz:MediaControls": {
+        "Comand": "de.fhem.MediaControlComand",
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room"
+      },
+      "Thyraz:SetNumeric": {
+        "Change": "de.fhem.ChangePercent",
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room",
+        "Type": "de.fhem.NumericType",
+        "Unit": "de.fhem.Unit",
+        "Value": "snips/number"
+      },
+      "Thyraz:SetOnOff": {
+        "Device": "de.fhem.Device",
+        "Room": "de.fhem.Room",
+        "Value": "de.fhem.OnOffValue"
+      }
+    }
+  },
+  "intent_parsers": [
+    "deterministic_intent_parser",
+    "probabilistic_intent_parser"
+  ],
+  "model_version": "0.16.0",
+  "training_package_version": "0.16.1",
+  "unit_name": "nlu_engine"
+}
