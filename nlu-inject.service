@@ -1,0 +1,12 @@
+# /etc/systemd/system/nlu-inject.service
+[Unit]
+Description=nlu-inject
+After=network.target
+
+[Service]
+ExecStart=/opt/snips-nlu-inject/nlu-inject.py
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
