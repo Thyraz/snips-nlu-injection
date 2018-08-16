@@ -53,7 +53,7 @@ def update_nlu(client, userdata, msg):
                 samples[i] = sample
 
         # Write new JSON data to file
-        with open('/usr/share/snips/assistant/nlu_engine/deterministic_intent_parser/intent_parser.json.new', 'w', encoding='utf-8') as outfile:
+        with open('/usr/share/snips/assistant/nlu_engine/deterministic_intent_parser/intent_parser.json', 'w', encoding='utf-8') as outfile:
             json.dump(intentData, outfile, sort_keys=True, indent=2)
 
     # Patch nlu_engine.json
@@ -70,7 +70,7 @@ def update_nlu(client, userdata, msg):
                     utterances[injectValue] = injectValue
                     utterances[injectValue.lower()] = injectValue
 
-        with open('/usr/share/snips/assistant/nlu_engine/nlu_engine.json.new', 'w', encoding='utf-8') as outfile:
+        with open('/usr/share/snips/assistant/nlu_engine/nlu_engine.json', 'w', encoding='utf-8') as outfile:
             json.dump(nluData, outfile, sort_keys=True, indent=2)
 
     # Restart nlu service
