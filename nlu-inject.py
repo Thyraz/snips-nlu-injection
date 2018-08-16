@@ -27,7 +27,7 @@ def update_nlu(client, userdata, msg):
             injectDict.update(operation[1])
 
     # Patch intent_parser.json
-    with open('/usr/share/snips/assistant/nlu_engine/deterministic_intent_parser/intent_parser.json', encoding='utf-8') as data_file:
+    with open('/usr/share/snips/assistant/nlu_engine/deterministic_intent_parser/intent_parser.json', encoding='utf-8') as intent_file:
         intentData = json.loads(intent_file.read())
         nameToSlotDict =  intentData['group_names_to_slot_names']
         slotToEntityDict = intentData['slot_names_to_entities']
