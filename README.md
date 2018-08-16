@@ -17,8 +17,8 @@ This script tries to fill the gap in the meantime.
  - `toml` - library to read the snips configuration file
 
 ## Installation
-copy _nlu-inject.py_ to _/opt/snips-nlu-inject/_\
-copy _nlu-inject.service_ to _/etc/systemd/system/_
+copy `nlu-inject.py` to _/opt/snips-nlu-inject/_\
+copy `nlu-inject.service` to _/etc/systemd/system/_
 
 ```
 sudo chmod +x /opt/snips-nlu-inject/nlu-inject.py
@@ -30,7 +30,7 @@ The script will listen to messages on the `hermes/asr/inject` topic\
 and inject the values to nlu. (_nlu_engine.json_ and _intent_parser.json_)\
 After that, the _snips-nlu.service_ gets restarted.
 
-Injection has to be done again after you update/install a new version of your assitant.\
+Injection has to be done again if you update/install a new version of your assistant.\
 But this also applies to asr injection, so you should already be familier with that.
 
 The script needs read write access to both files mentioned above.
