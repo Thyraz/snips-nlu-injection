@@ -15,8 +15,6 @@ This script tries to fill the gap in the meantime.
 ## Dependencies
  - `paho` - python MQTT
  - `toml` - library to read the snips configuration file
- - `mpg123` - binary for converting the MP3s Polly responds with, into WAVs which Snips can process.
-
 
 ## Installation
 copy _nlu-inject.py_ to _/opt/snips-nlu-inject/_\
