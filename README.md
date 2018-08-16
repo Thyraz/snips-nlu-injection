@@ -13,8 +13,14 @@ I'm pretty sure the developers of snips.ai are already working on their own solu
 This script tries to fill the gap in the meantime.
 
 ## Installation
-copy nlu-inject.py to _/opt/snips-nlu-inject/_\
-start with `sudo python3 nlu-inject.py`
+copy _nlu-inject.py_ to _/opt/snips-nlu-inject/_\
+copy _nlu-inject.service_ to _/etc/systemd/system/_
+
+```
+sudo chmod +x /opt/snips-nlu-inject/nlu-inject.py
+sudo systemctl enable nlu-inject.service
+sudo systemctl start nlu-inject.service
+```
 
 The script will listen to messages on the `hermes/asr/inject` topic\
 and inject the values to nlu. (_nlu_engine.json_ and _intent_parser.json_)\
