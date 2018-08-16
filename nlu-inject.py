@@ -67,8 +67,8 @@ def update_nlu(client, userdata, msg):
                 injectValues = injectDict[entity]
 
                 for injectValue in injectValues:
-                    utterances[injectValue] = injectValue
-                    utterances[injectValue.lower()] = injectValue
+                    utterances[injectValue] = injectValue.lower()
+                    utterances[injectValue.lower()] = injectValue.lower()
 
         with open('/usr/share/snips/assistant/nlu_engine/nlu_engine.json', 'w', encoding='utf-8') as outfile:
             json.dump(nluData, outfile, sort_keys=True, indent=2)
